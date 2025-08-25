@@ -6,7 +6,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract SubmissionDataFingerprints is Ownable {
     struct Record {
         uint256 submissionID;
-        uint256 taskID;
         bytes32 fingerPrint;
     }
 
@@ -91,7 +90,7 @@ contract SubmissionDataFingerprints is Ownable {
         }
 
         found = false;
-        record = Record(0,0,bytes32(0));
+        record = Record(0,bytes32(0));
         for (uint i = 0; i < records.length; i++) {
             if (records[i].submissionID == submissionID) {
                 found = true;

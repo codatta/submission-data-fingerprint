@@ -57,7 +57,6 @@ max_fee_per_gas = base_fee_per_gas + max_priority_fee_per_gas * 2
 
 # Simulated data
 submissionID = 12341234
-taskID = 7789596241600103173
 quality = "S"
 data = {
     "brand": "Homemade ",
@@ -81,28 +80,28 @@ print(encodedData)
 
 fingerprint = Web3.keccak(encodedData)
 
-record_info = (submissionID, taskID, fingerprint)
+record_info = (submissionID, fingerprint)
 
-tx = contract.functions.submit(account.address, record_info).build_transaction(
-    {
-        "from": account.address,
-        "nonce": nonce,
-        "maxPriorityFeePerGas": max_priority_fee_per_gas,
-        "maxFeePerGas": max_fee_per_gas,
-        "chainId": web3.eth.chain_id,
-        "type": 2,
-    }
-)
+# tx = contract.functions.submit(account.address, record_info).build_transaction(
+#     {
+#         "from": account.address,
+#         "nonce": nonce,
+#         "maxPriorityFeePerGas": max_priority_fee_per_gas,
+#         "maxFeePerGas": max_fee_per_gas,
+#         "chainId": web3.eth.chain_id,
+#         "type": 2,
+#     }
+# )
 
-## Submit multiple at once, around 10 at most.
-# tx = contract.functions.batchSubmit([record_info]).build_transaction({
-#     "from": account.address,
-#     "nonce": nonce,
-#     "maxPriorityFeePerGas": max_priority_fee_per_gas,
-#     "maxFeePerGas": max_fee_per_gas,
-#     "chainId": web3.eth.chain_id,
-#     "type": 2,
-# })
+# Submit multiple at once, around 10 at most.
+tx = contract.functions.batchSubmit([account.address], [record_info]).build_transaction({
+    "from": account.address,
+    "nonce": nonce,
+    "maxPriorityFeePerGas": max_priority_fee_per_gas,
+    "maxFeePerGas": max_fee_per_gas,
+    "chainId": web3.eth.chain_id,
+    "type": 2,
+})
 
 # estimate gas
 tx["gas"] = web3.eth.estimate_gas(tx)

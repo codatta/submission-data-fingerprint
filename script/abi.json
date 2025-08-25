@@ -26,10 +26,6 @@
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
-			"name": "taskID",
-			"type": "uint256",
-			"internalType": "uint256"
-		}, {
 			"name": "fingerPrint",
 			"type": "bytes32",
 			"internalType": "bytes32"
@@ -67,10 +63,6 @@
 		"internalType": "struct SubmissionDataFingerprints.Record",
 		"components": [{
 			"name": "submissionID",
-			"type": "uint256",
-			"internalType": "uint256"
-		}, {
-			"name": "taskID",
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
@@ -123,10 +115,6 @@
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
-			"name": "taskID",
-			"type": "uint256",
-			"internalType": "uint256"
-		}, {
 			"name": "fingerPrint",
 			"type": "bytes32",
 			"internalType": "bytes32"
@@ -176,10 +164,6 @@
 		"internalType": "struct SubmissionDataFingerprints.Record",
 		"components": [{
 			"name": "submissionID",
-			"type": "uint256",
-			"internalType": "uint256"
-		}, {
-			"name": "taskID",
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
