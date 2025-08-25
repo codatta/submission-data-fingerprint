@@ -31,6 +31,28 @@ $ forge test
 $ forge fmt
 ```
 
+### Contract Call
+
+Enter the directory `script/`
+
+```
+cd script
+```
+
+#### Configuration
+
+Copy `.env` from `.env.example`, edit `.env`
+
+```
+SUBMITTER_PRIVATE_KEY='' # the private key of the submitter
+```
+
+#### Execute
+
+```
+python fingerprint.py
+```
+
 ### Help
 
 ```shell

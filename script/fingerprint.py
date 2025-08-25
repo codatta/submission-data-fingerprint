@@ -23,7 +23,7 @@ with deployment_path.open("r", encoding="utf-8") as file:
 load_dotenv()
 
 # Read environment variables
-private_key = os.getenv("PRIVATE_KEY")
+private_key = os.getenv("SUBMITTER_PRIVATE_KEY")
 rpc_url = os.getenv("KITE_TEST_PRC_URL")
 
 print(private_key)

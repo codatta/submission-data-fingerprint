@@ -10,7 +10,7 @@ contract SubmissionDataFingerprintsScript is Script {
     function setUp() public {}
 
     function run() public {
-        uint256 owner = vm.envUint("PRIVATE_KEY");
+        uint256 owner = vm.envUint("DEPLOYER_PRIVATE_KEY");
         address ownerAddress = vm.addr(owner);
         address submitterAddress = vm.envAddress("SUBMITTER");
         vm.startBroadcast(owner);
