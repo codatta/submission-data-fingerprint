@@ -1,0 +1,254 @@
+[{
+	"type": "constructor",
+	"inputs": [{
+		"name": "_owner",
+		"type": "address",
+		"internalType": "address"
+	}, {
+		"name": "_submitter",
+		"type": "address",
+		"internalType": "address"
+	}],
+	"stateMutability": "nonpayable"
+}, {
+	"type": "function",
+	"name": "batchSubmit",
+	"inputs": [{
+		"name": "users",
+		"type": "address[]",
+		"internalType": "address[]"
+	}, {
+		"name": "records",
+		"type": "tuple[]",
+		"internalType": "struct SubmissionDataFingerprints.Record[]",
+		"components": [{
+			"name": "submissionID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "taskID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "fingerPrint",
+			"type": "bytes32",
+			"internalType": "bytes32"
+		}]
+	}],
+	"outputs": [],
+	"stateMutability": "nonpayable"
+}, {
+	"type": "function",
+	"name": "getRecord",
+	"inputs": [{
+		"name": "user",
+		"type": "address",
+		"internalType": "address"
+	}, {
+		"name": "submissionID",
+		"type": "uint256",
+		"internalType": "uint256"
+	}, {
+		"name": "page",
+		"type": "uint256",
+		"internalType": "uint256"
+	}, {
+		"name": "size",
+		"type": "uint256",
+		"internalType": "uint256"
+	}],
+	"outputs": [{
+		"name": "found",
+		"type": "bool",
+		"internalType": "bool"
+	}, {
+		"name": "record",
+		"type": "tuple",
+		"internalType": "struct SubmissionDataFingerprints.Record",
+		"components": [{
+			"name": "submissionID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "taskID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "fingerPrint",
+			"type": "bytes32",
+			"internalType": "bytes32"
+		}]
+	}, {
+		"name": "end",
+		"type": "bool",
+		"internalType": "bool"
+	}],
+	"stateMutability": "view"
+}, {
+	"type": "function",
+	"name": "getRecordCount",
+	"inputs": [{
+		"name": "user",
+		"type": "address",
+		"internalType": "address"
+	}],
+	"outputs": [{
+		"name": "count",
+		"type": "uint256",
+		"internalType": "uint256"
+	}],
+	"stateMutability": "view"
+}, {
+	"type": "function",
+	"name": "getRecords",
+	"inputs": [{
+		"name": "user",
+		"type": "address",
+		"internalType": "address"
+	}, {
+		"name": "page",
+		"type": "uint256",
+		"internalType": "uint256"
+	}, {
+		"name": "size",
+		"type": "uint256",
+		"internalType": "uint256"
+	}],
+	"outputs": [{
+		"name": "rets",
+		"type": "tuple[]",
+		"internalType": "struct SubmissionDataFingerprints.Record[]",
+		"components": [{
+			"name": "submissionID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "taskID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "fingerPrint",
+			"type": "bytes32",
+			"internalType": "bytes32"
+		}]
+	}, {
+		"name": "end",
+		"type": "bool",
+		"internalType": "bool"
+	}],
+	"stateMutability": "view"
+}, {
+	"type": "function",
+	"name": "owner",
+	"inputs": [],
+	"outputs": [{
+		"name": "",
+		"type": "address",
+		"internalType": "address"
+	}],
+	"stateMutability": "view"
+}, {
+	"type": "function",
+	"name": "renounceOwnership",
+	"inputs": [],
+	"outputs": [],
+	"stateMutability": "nonpayable"
+}, {
+	"type": "function",
+	"name": "setSubmitter",
+	"inputs": [{
+		"name": "_submitter",
+		"type": "address",
+		"internalType": "address"
+	}],
+	"outputs": [],
+	"stateMutability": "nonpayable"
+}, {
+	"type": "function",
+	"name": "submit",
+	"inputs": [{
+		"name": "user",
+		"type": "address",
+		"internalType": "address"
+	}, {
+		"name": "record",
+		"type": "tuple",
+		"internalType": "struct SubmissionDataFingerprints.Record",
+		"components": [{
+			"name": "submissionID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "taskID",
+			"type": "uint256",
+			"internalType": "uint256"
+		}, {
+			"name": "fingerPrint",
+			"type": "bytes32",
+			"internalType": "bytes32"
+		}]
+	}],
+	"outputs": [],
+	"stateMutability": "nonpayable"
+}, {
+	"type": "function",
+	"name": "transferOwnership",
+	"inputs": [{
+		"name": "newOwner",
+		"type": "address",
+		"internalType": "address"
+	}],
+	"outputs": [],
+	"stateMutability": "nonpayable"
+}, {
+	"type": "event",
+	"name": "OwnershipTransferred",
+	"inputs": [{
+		"name": "previousOwner",
+		"type": "address",
+		"indexed": true,
+		"internalType": "address"
+	}, {
+		"name": "newOwner",
+		"type": "address",
+		"indexed": true,
+		"internalType": "address"
+	}],
+	"anonymous": false
+}, {
+	"type": "error",
+	"name": "NotSubmitter",
+	"inputs": [{
+		"name": "account",
+		"type": "address",
+		"internalType": "address"
+	}]
+}, {
+	"type": "error",
+	"name": "OwnableInvalidOwner",
+	"inputs": [{
+		"name": "owner",
+		"type": "address",
+		"internalType": "address"
+	}]
+}, {
+	"type": "error",
+	"name": "OwnableUnauthorizedAccount",
+	"inputs": [{
+		"name": "account",
+		"type": "address",
+		"internalType": "address"
+	}]
+}, {
+	"type": "error",
+	"name": "ParameterLengthNotEqual",
+	"inputs": [{
+		"name": "lengthOfUsers",
+		"type": "uint256",
+		"internalType": "uint256"
+	}, {
+		"name": "lengthOfRecords",
+		"type": "uint256",
+		"internalType": "uint256"
+	}]
+}]

@@ -33,8 +33,8 @@ contract SubmissionDataFingerprints is Ownable {
         _;
     }
 
-    constructor() Ownable(msg.sender) {
-
+    constructor(address _owner, address _submitter) Ownable(_owner) {
+        submitter = _submitter;
     }
 
     /**
