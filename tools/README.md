@@ -41,7 +41,7 @@ node cjs.js <PAHT_OF_FILE>
 The following command will calculate the fingerprint.
 
 ```
-node keccak.js
+node fingerprint.js
 ```
 
-**NOTE**: You should modify the parameters `address`, `quality`, `cjsData` in `keccak.js` before execution
+**NOTE**: You should modify the parameters `address`, `quality`, `cjsData` in `fingerprint.js` before execution
