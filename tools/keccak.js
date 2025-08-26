@@ -5,13 +5,13 @@ function main() {
     const quality = "S";             // quality: string
     const submissionData = '{"brand":"Homemade ","foodCategory":"Homemade food or snacks","foodName":"Paneer loded basan roll ","images":[{"hash":"e6b024a0a5b3f202667300f3621190e666a52cadfd715664cd2e082cb0d3e03a"}],"quantity":"Individual (1 person)","region":"PK"}'; // JCS-format submissionData: string
 
-    const encoded = ethers.AbiCoder.defaultAbiCoder().encode(
+    const encodedData = ethers.AbiCoder.defaultAbiCoder().encode(
         ["address", "string", "string"],
         [address, quality, submissionData]
     );
-    console.log("encoded data: ", encoded)
+    console.log("encoded data: ", encodedData)
 
-    const hash = ethers.keccak256(encoded);
+    const hash = ethers.keccak256(encodedData);
     console.log("fingerprint: ", hash);
 }
 
