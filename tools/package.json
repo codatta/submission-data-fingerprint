@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "crypto": "^1.0.1",
+    "ethers": "^6.15.0",
     "json-canonicalize": "^2.0.0"
   }
 }

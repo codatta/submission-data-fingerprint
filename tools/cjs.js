@@ -11,7 +11,7 @@ function main() {
     let jsonData = JSON.parse(data.toString())
 
     const result = canonicalize(jsonData)
-    console.log(result)
+    console.log("cjs data: ", result)
 }
 
 main()
