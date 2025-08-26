@@ -35,3 +35,13 @@ node cjs.js <PAHT_OF_FILE>
 ```
 
 `<PATH_OF_FILE>` is the path of the original json file to be encoded, you can use `./data.example.json` for example.
+
+### Fingerprint
+
+The following command will calculate the fingerprint.
+
+```
+node keccak.js
+```
+
+**NOTE**: You should modify the parameters `address`, `quality`, `cjsData` in `keccak.js` before execution
