@@ -31,6 +31,8 @@ contract SubmissionDataFingerprintsTest is Test {
     function test_submit_with_submitter() public {
         SubmissionDataFingerprints.Record memory record = SubmissionDataFingerprints.Record(0, bytes32(0));
         vm.prank(submitter);
+        vm.expectEmit(true, false, false, true);
+        emit SubmissionDataFingerprints.SubmissionDataSubmitted(submitter, 0, bytes32(0));
         fingerprints.submit(submitter, record);
     }
 
@@ -61,6 +63,8 @@ contract SubmissionDataFingerprintsTest is Test {
         users[0] = submitter;
         SubmissionDataFingerprints.Record[] memory records = new SubmissionDataFingerprints.Record[](1);
         records[0] = SubmissionDataFingerprints.Record(0, bytes32(0));
+        vm.expectEmit(true, false, false, true);
+        emit SubmissionDataFingerprints.SubmissionDataSubmitted(submitter, 0, bytes32(0));
         fingerprints.batchSubmit(users, records);
     }
 

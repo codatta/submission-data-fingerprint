@@ -22,6 +22,8 @@ contract SubmissionDataFingerprints is Ownable {
      */
     error ParameterLengthNotEqual(uint256 lengthOfUsers, uint256 lengthOfRecords);
 
+    event SubmissionDataSubmitted(address user, uint256 submissionID, bytes32 fingerprint);
+
     /**
      * @dev Throws if called by any account other than the submitter.
      */
@@ -43,6 +45,7 @@ contract SubmissionDataFingerprints is Ownable {
     */
     function submit(address user, Record calldata record) public onlySubmitter {
         storedRecords[user].push(record);
+        emit SubmissionDataSubmitted(user, record.submissionID, record.fingerPrint);
     }
 
     /**
@@ -57,6 +60,7 @@ contract SubmissionDataFingerprints is Ownable {
 
         for (uint i = 0; i < records.length; i++) {
             storedRecords[users[i]].push(records[i]);
+            emit SubmissionDataSubmitted(users[i], records[i].submissionID, records[i].fingerPrint);
         }
     }
 
