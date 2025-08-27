@@ -26,12 +26,12 @@ node sha256.js <PATH_OF_IMAGE>
 
 `<PATH_OF_IMAGE>` is the path of the image you want to calculate hash for, you can use `./image.example.png` for example.
 
-### CJS Data
+### JCS Data
 
-The following command will encode the result in CJS format.
+The following command will encode the result in JCS format.
 
 ```
-node cjs.js <PAHT_OF_FILE>
+node jcs.js <PAHT_OF_FILE>
 ```
 
 `<PATH_OF_FILE>` is the path of the original json file to be encoded, you can use `./data.example.json` for example.
@@ -44,4 +44,4 @@ The following command will calculate the fingerprint.
 node fingerprint.js
 ```
 
-**NOTE**: You should modify the parameters `address`, `quality`, `cjsData` in `fingerprint.js` before execution
+**NOTE**: You should modify the parameters `address`, `quality`, `jcsData` in `fingerprint.js` before execution
