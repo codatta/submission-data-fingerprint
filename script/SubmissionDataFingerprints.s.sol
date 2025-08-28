@@ -10,10 +10,10 @@ contract SubmissionDataFingerprintsScript is Script {
     function setUp() public {}
 
     function run() public {
-        uint256 owner = vm.envUint("DEPLOYER_PRIVATE_KEY");
-        address ownerAddress = vm.addr(owner);
+        uint256 deployer = vm.envUint("DEPLOYER_PRIVATE_KEY");
+        address ownerAddress = vm.envAddress("OWNER");
         address submitterAddress = vm.envAddress("SUBMITTER");
-        vm.startBroadcast(owner);
+        vm.startBroadcast(deployer);
 
         fingerprints = new SubmissionDataFingerprints(ownerAddress, submitterAddress);
 
