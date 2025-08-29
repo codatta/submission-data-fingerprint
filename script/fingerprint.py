@@ -43,8 +43,8 @@ contract = web3.eth.contract(address=contract_address, abi=abi)
 web3.middleware_onion.inject(ExtraDataToPOAMiddleware, layer=0)
 
 # get address nonce
-account = web3.eth.account.from_key(private_key)
-nonce = web3.eth.get_transaction_count(account.address)
+submitter = web3.eth.account.from_key(private_key)
+nonce = web3.eth.get_transaction_count(submitter.address)
 
 # get gas price
 latest_block = web3.eth.get_block("latest")
@@ -85,7 +85,7 @@ record_info = (submissionID, fingerprint)
 
 # tx = contract.functions.submit(userAddress, record_info).build_transaction(
 #     {
-#         "from": account.address,
+#         "from": submitter.address,
 #         "nonce": nonce,
 #         "maxPriorityFeePerGas": max_priority_fee_per_gas,
 #         "maxFeePerGas": max_fee_per_gas,
@@ -96,7 +96,7 @@ record_info = (submissionID, fingerprint)
 
 # Submit multiple at once, around 10 at most.
 tx = contract.functions.batchSubmit([userAddress], [record_info]).build_transaction({
-    "from": account.address,
+    "from": submitter.address,
     "nonce": nonce,
     "maxPriorityFeePerGas": max_priority_fee_per_gas,
     "maxFeePerGas": max_fee_per_gas,
