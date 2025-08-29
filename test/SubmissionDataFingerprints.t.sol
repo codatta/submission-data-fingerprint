@@ -59,12 +59,20 @@ contract SubmissionDataFingerprintsTest is Test {
 
     function test_batchSubmit_with_submitter() public {
         vm.prank(submitter);
-        address[] memory users = new address[](1);
+        address[] memory users = new address[](3);
         users[0] = submitter;
-        SubmissionDataFingerprints.Record[] memory records = new SubmissionDataFingerprints.Record[](1);
+        users[1] = owner;
+        users[2] = submitter;
+        SubmissionDataFingerprints.Record[] memory records = new SubmissionDataFingerprints.Record[](3);
         records[0] = SubmissionDataFingerprints.Record(0, bytes32(0));
+        records[1] = SubmissionDataFingerprints.Record(1, bytes32(uint256(1)));
+        records[2] = SubmissionDataFingerprints.Record(2, bytes32(uint256(2)));
         vm.expectEmit(true, false, false, true);
         emit SubmissionDataFingerprints.SubmissionDataSubmitted(submitter, 0, bytes32(0));
+        vm.expectEmit(true, false, false, true);
+        emit SubmissionDataFingerprints.SubmissionDataSubmitted(owner, 1, bytes32(uint256(1)));
+        vm.expectEmit(true, false, false, true);
+        emit SubmissionDataFingerprints.SubmissionDataSubmitted(submitter, 2, bytes32(uint256(2)));
         fingerprints.batchSubmit(users, records);
     }
 
