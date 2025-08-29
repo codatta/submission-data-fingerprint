@@ -176,6 +176,16 @@
 	"stateMutability": "nonpayable"
 }, {
 	"type": "function",
+	"name": "submitter",
+	"inputs": [],
+	"outputs": [{
+		"name": "",
+		"type": "address",
+		"internalType": "address"
+	}],
+	"stateMutability": "view"
+}, {
+	"type": "function",
 	"name": "transferOwnership",
 	"inputs": [{
 		"name": "newOwner",
@@ -197,6 +207,26 @@
 		"type": "address",
 		"indexed": true,
 		"internalType": "address"
+	}],
+	"anonymous": false
+}, {
+	"type": "event",
+	"name": "SubmissionDataSubmitted",
+	"inputs": [{
+		"name": "user",
+		"type": "address",
+		"indexed": false,
+		"internalType": "address"
+	}, {
+		"name": "submissionID",
+		"type": "uint256",
+		"indexed": false,
+		"internalType": "uint256"
+	}, {
+		"name": "fingerprint",
+		"type": "bytes32",
+		"indexed": false,
+		"internalType": "bytes32"
 	}],
 	"anonymous": false
 }, {
