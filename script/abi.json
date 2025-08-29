@@ -22,7 +22,7 @@
 		"type": "tuple[]",
 		"internalType": "struct SubmissionDataFingerprints.Record[]",
 		"components": [{
-			"name": "submissionID",
+			"name": "submissionId",
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
@@ -35,13 +35,13 @@
 	"stateMutability": "nonpayable"
 }, {
 	"type": "function",
-	"name": "getRecord",
+	"name": "getUserRecordBySubmissionId",
 	"inputs": [{
 		"name": "user",
 		"type": "address",
 		"internalType": "address"
 	}, {
-		"name": "submissionID",
+		"name": "submissionId",
 		"type": "uint256",
 		"internalType": "uint256"
 	}, {
@@ -62,7 +62,7 @@
 		"type": "tuple",
 		"internalType": "struct SubmissionDataFingerprints.Record",
 		"components": [{
-			"name": "submissionID",
+			"name": "submissionId",
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
@@ -78,7 +78,7 @@
 	"stateMutability": "view"
 }, {
 	"type": "function",
-	"name": "getRecordCount",
+	"name": "getUserRecordCount",
 	"inputs": [{
 		"name": "user",
 		"type": "address",
@@ -92,7 +92,7 @@
 	"stateMutability": "view"
 }, {
 	"type": "function",
-	"name": "getRecords",
+	"name": "getUserRecords",
 	"inputs": [{
 		"name": "user",
 		"type": "address",
@@ -111,7 +111,7 @@
 		"type": "tuple[]",
 		"internalType": "struct SubmissionDataFingerprints.Record[]",
 		"components": [{
-			"name": "submissionID",
+			"name": "submissionId",
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
@@ -163,7 +163,7 @@
 		"type": "tuple",
 		"internalType": "struct SubmissionDataFingerprints.Record",
 		"components": [{
-			"name": "submissionID",
+			"name": "submissionId",
 			"type": "uint256",
 			"internalType": "uint256"
 		}, {
@@ -218,7 +218,7 @@
 		"indexed": false,
 		"internalType": "address"
 	}, {
-		"name": "submissionID",
+		"name": "submissionId",
 		"type": "uint256",
 		"indexed": false,
 		"internalType": "uint256"
