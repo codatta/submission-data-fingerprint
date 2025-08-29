@@ -117,5 +117,5 @@ print(
     f"tx hash: {tx_hash.hex()}, block number: {receipt.blockNumber}, gas used: {receipt.gasUsed}"
 )
 
-result = contract.functions.getRecord(account.address, submissionID, 0, 10000).call()
+result = contract.functions.getUserRecordBySubmissionId(account.address, submissionID, 0, 10000).call()
 print("Get user arena data", result)
