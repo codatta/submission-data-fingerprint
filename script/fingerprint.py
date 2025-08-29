@@ -58,6 +58,7 @@ max_fee_per_gas = base_fee_per_gas + max_priority_fee_per_gas * 2
 # Simulated data
 submissionID = 12341234
 quality = "S"
+userAddress = "0xEbB6C1d3dA9fb9bB75B5f6257c1C46E507C6be9c"
 data = {
     "brand": "Homemade ",
     "images": [
@@ -72,17 +73,17 @@ data = {
 }
 canonical_bytes = rfc8785.dumps(data)
 print(canonical_bytes)
-print(account.address, "S", canonical_bytes)
+print(userAddress, "S", canonical_bytes)
 
 # encode parameters
-encodedData = encode(["address", "string", "bytes"], [account.address, quality, canonical_bytes])
+encodedData = encode(["address", "string", "bytes"], [userAddress, quality, canonical_bytes])
 print(encodedData)
 
 fingerprint = Web3.keccak(encodedData)
 
 record_info = (submissionID, fingerprint)
 
-# tx = contract.functions.submit(account.address, record_info).build_transaction(
+# tx = contract.functions.submit(userAddress, record_info).build_transaction(
 #     {
 #         "from": account.address,
 #         "nonce": nonce,
@@ -94,7 +95,7 @@ record_info = (submissionID, fingerprint)
 # )
 
 # Submit multiple at once, around 10 at most.
-tx = contract.functions.batchSubmit([account.address], [record_info]).build_transaction({
+tx = contract.functions.batchSubmit([userAddress], [record_info]).build_transaction({
     "from": account.address,
     "nonce": nonce,
     "maxPriorityFeePerGas": max_priority_fee_per_gas,
@@ -117,5 +118,5 @@ print(
     f"tx hash: {tx_hash.hex()}, block number: {receipt.blockNumber}, gas used: {receipt.gasUsed}"
 )
 
-result = contract.functions.getUserRecordBySubmissionId(account.address, submissionID, 0, 10000).call()
+result = contract.functions.getUserRecordBySubmissionId(userAddress, submissionID, 0, 10000).call()
 print("Get user arena data", result)
