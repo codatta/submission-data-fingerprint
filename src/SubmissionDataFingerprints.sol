@@ -10,7 +10,7 @@ contract SubmissionDataFingerprints is Ownable {
     }
 
     mapping(address=>Record[]) private storedRecords;
-    address private submitter;
+    address public submitter;
 
     /**
      * @dev The caller account is not authorized to perform an operation.
