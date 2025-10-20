@@ -21,7 +21,7 @@ contract SubmissionDataFingerprintsTest is Test {
     }
 
     function test_submit_with_notSubmitter() public {
-        (address hacker, ) = makeAddrAndKey("hacker");
+        (address hacker,) = makeAddrAndKey("hacker");
         SubmissionDataFingerprints.Record memory record = SubmissionDataFingerprints.Record(0, bytes32(0));
         vm.prank(hacker);
         vm.expectRevert(abi.encodeWithSelector(SubmissionDataFingerprints.NotSubmitter.selector, hacker));
@@ -37,7 +37,7 @@ contract SubmissionDataFingerprintsTest is Test {
     }
 
     function test_batchSubmit_with_notSubmitter() public {
-        (address hacker, ) = makeAddrAndKey("hacker");
+        (address hacker,) = makeAddrAndKey("hacker");
         vm.prank(hacker);
         vm.expectRevert(abi.encodeWithSelector(SubmissionDataFingerprints.NotSubmitter.selector, hacker));
         address[] memory users = new address[](1);
@@ -53,7 +53,11 @@ contract SubmissionDataFingerprintsTest is Test {
         users[0] = submitter;
         SubmissionDataFingerprints.Record[] memory records = new SubmissionDataFingerprints.Record[](2);
         records[0] = SubmissionDataFingerprints.Record(0, bytes32(0));
-        vm.expectRevert(abi.encodeWithSelector(SubmissionDataFingerprints.ParameterLengthNotEqual.selector, users.length, records.length));
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                SubmissionDataFingerprints.ParameterLengthNotEqual.selector, users.length, records.length
+            )
+        );
         fingerprints.batchSubmit(users, records);
     }
 
@@ -94,7 +98,8 @@ contract SubmissionDataFingerprintsTest is Test {
     }
 
     function test_getUserRecordBySubmissionID_with_userNotFound() public view {
-        (bool found, SubmissionDataFingerprints.Record memory record, bool end) = fingerprints.getUserRecordBySubmissionId(submitter, 0, 0, 1000);
+        (bool found, SubmissionDataFingerprints.Record memory record, bool end) =
+            fingerprints.getUserRecordBySubmissionId(submitter, 0, 0, 1000);
         vm.assertEq(found, false);
         vm.assertEq(end, true);
         vm.assertEq(record.submissionId, 0);
@@ -110,7 +115,8 @@ contract SubmissionDataFingerprintsTest is Test {
         records[1] = SubmissionDataFingerprints.Record(1, bytes32(uint256(1)));
         fingerprints.batchSubmit(users, records);
 
-        (bool found, SubmissionDataFingerprints.Record memory record, bool end) = fingerprints.getUserRecordBySubmissionId(submitter, 1, 0, 1);
+        (bool found, SubmissionDataFingerprints.Record memory record, bool end) =
+            fingerprints.getUserRecordBySubmissionId(submitter, 1, 0, 1);
         vm.assertEq(found, false);
         vm.assertEq(end, false);
         vm.assertEq(record.submissionId, 0);
@@ -126,7 +132,8 @@ contract SubmissionDataFingerprintsTest is Test {
         records[1] = SubmissionDataFingerprints.Record(1, bytes32(uint256(1)));
         fingerprints.batchSubmit(users, records);
 
-        (bool found, SubmissionDataFingerprints.Record memory record, bool end) = fingerprints.getUserRecordBySubmissionId(submitter, 1, 1, 1);
+        (bool found, SubmissionDataFingerprints.Record memory record, bool end) =
+            fingerprints.getUserRecordBySubmissionId(submitter, 1, 1, 1);
         vm.assertEq(found, true);
         vm.assertEq(end, true);
         vm.assertEq(record.submissionId, 1);

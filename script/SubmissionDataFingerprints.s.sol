@@ -20,16 +20,10 @@ contract SubmissionDataFingerprintsScript is Script {
         vm.stopBroadcast();
 
         string memory root = vm.projectRoot();
-        string memory deployPath = string.concat(
-            root,
-            "/script/deployment.json"
-        );
+        string memory deployPath = string.concat(root, "/script/deployment.json");
         if (vm.exists(deployPath)) {
             vm.removeFile(deployPath);
         }
-        vm.writeFile(
-            deployPath,
-            vm.serializeAddress("", "fingerprints", address(fingerprints))
-        );
+        vm.writeFile(deployPath, vm.serializeAddress("", "fingerprints", address(fingerprints)));
     }
 }
